@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--自动适应移动屏幕-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--优先使用webkit内核渲染-->
+    <meta name="renderer" content="webkit">
+    <!--不要被百度转码-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>常见问题</title>
+    <!--以下是引入amazeui资源-->
+    <link href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.css" rel="stylesheet">
+    <!--<link href="css/折叠面板.css" rel="stylesheet">-->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" language="JavaScript" charset="utf-8"></script>
+    <!--以下是引入amazeui资源-->
+    <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js" language="JavaScript" charset="utf-8"></script>
+    <script>
+        function getQueryVariable(variable)
+        {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+        var app = getQueryVariable("app");
+        app = app ? decodeURI(app) : '萌宝儿歌大全';
+    </script>
+</head>
+<style>
+    body{
+        position: relative;
+    }
+    a{
+        color: #555555;
+    }
+    a:hover, a:focus{
+        color: #19be6b;
+    }
+    .am-panel heard frist{
+        color: #19be6b !important;
+        background: #93A1A1;
+    }
+    .heard{
+        text-align: center;
+        color: #19be6b !important;
+    }
+    .return{
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        margin-top: -.8rem;
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    .questions{
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        border-top: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+    }
+    .admin-sidebar-list{
+        padding-bottom: 100px;
+    }
+    .ip{
+        width: 100%;
+        height: 4rem;
+        bottom: 0;
+        display: flex;
+        padding: 1rem;
+    }
+    .ip p{
+        margin: 0;
+        text-align: right;
+        line-height: 2rem;
+    }
+    .ip1{
+        flex: 1;
+        line-height: 4rem;
+    }
+    .ip2{
+        flex: 1;
+        text-align: right;
+        line-height: 2rem;
+    }
+    .ip3{
+        font-size: 1.2rem;
+    }
+    .frist>a{
+        color: #19be6b;
+        font-weight: bold;
+    }
+    .foot{
+        width: 100%;
+        height: 10rem;
+        position: fixed;
+        bottom: 0;
+        background: #fff;
+    }
+</style>
+<body>
+<ul class="am-list admin-sidebar-list" id="collapase-nav-1">
+    <!--<li  class="am-panel heard frist">-->
+        <!--&lt;!&ndash;<img class='return' src="./img/1.png" alt="">&ndash;&gt;-->
+        <!--<a data-am-collapse="" href="#/">-->
+            <!--常见问题-->
+        <!--</a>-->
+    <!--</li>-->
+
+    <li class="am-panel">
+        <a id="web" data-am-collapse="{parent: '#collapase-nav-1', target: '#web-nav'}">
+            <i class="am-margin-left-sm"></i>   1.  什么是连续包月？
+            <i id="web-icon" class="am-icon-angle-right am-fr am-margin-right"></i>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="web-nav">
+            <li><a href="#">
+            <p>订阅周期：连续包月为1个月。</p>
+            <p>自动续费服务是指您开通会员时选择优惠金额，绑定支付方式并授权代扣费用，为您续费会员，用以延续您的VIP身份，省钱又省心。</p>
+            <p>安卓用户</p>
+            <p>付款：用户确认购买并付款后记入微信账户。</p>
+            <p>取消续订：如需取消续订，请在当前订阅周期到期前24小时以前，手动在微信钱包中关闭自动续订功能。可按以下方法进行关闭。</p>
+            <p>具体步骤如下：打开【微信】→点击【我的】→点击【钱包】→点击右上角更多按钮→点击【支付管理】→点击【自动扣费】→选择<script>document.write(app)</script>VIP自动续费→点击【关闭服务】即可。</p>
+            <p>续订：微信账户会在到期前24小时内扣费，扣费成功后订阅周期顺延。</p>
+            <p>苹果用户</p>
+            <p>付款：用户确认购买并付款后记入iTunes账户。</p>
+            <p>取消续订：如需取消续订，请在当前订阅周期到期前24小时以前，手动在iTunes/Apple ID设置管理中关闭自动续订功能。可按以下方法进行关闭。</p>
+            <p>具体步骤如下：打开苹果手机【设置】-> 进入【iTunes Store 与 App Store】->点击【Apple ID】->选择【查看Apple ID】->进入【账户设置】页面->点击【订阅】->选择<script>document.write(app)</script>取消订阅即可。</p>
+            <p>续订：苹果iTunes账户会在到期前24小时内扣费，扣费成功后订阅周期顺延。</p>
+            </a></li>
+        </ul>
+    </li>
+
+    <li class="am-panel">
+        <a id="bg" data-am-collapse="{parent: '#collapase-nav-1', target: '#bg-nav'}">
+            <i class="am-margin-left-sm"></i>  2.  通常有哪些原因造成支付失败？
+            <i id="bg-icon" class="am-icon-angle-right am-fr am-margin-right"></i>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="bg-nav">
+            <li><a href="#">
+            <p>网络故障等原因，会提示您“支付失败，请重试”，在这种情况下，您不会被扣费，该情况下，可能是短暂的网络抖动，请您重新进入购买页面进行支付。</p>
+            <p>由于您银行卡、微信等支付方式余额不足，在这种情况下，您将不会被扣费，该情况下请您完成充值后再进行支付。</p>
+            <p>如果您确定已经扣款，可前往<script>document.write(app)</script>设置页面交易记录中确认，若无消费记录，请联系客服。</p>
+            </a></li>
+        </ul>
+    </li>
+
+    <li class="am-panel">
+        <a id="database"data-am-collapse="{parent: '#collapase-nav-1', target: '#database-nav'}">
+            <i class="am-margin-left-sm"></i>  3.  如何确认支付已经成功？
+            <i id="database-icon" class="am-icon-angle-right am-fr am-margin-right"></i>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="database-nav">
+            <li><a href="#">
+            <p>当您完成网上在线支付过程后，系统会提示支付成功；如果系统没有提示支付失败或成功，请您查询银行卡余额， 如果款项已被扣除，说明您已支付成功，请到“交易记录”中查询订单信息进行核实。</p>
+            <p>温馨提示：若您是使用微信支付，请打开微信【钱包】->右上角更多按钮->【交易记录】即可查看微信支付的交易记录。</p>
+            </a></li>
+        </ul>
+    </li>
+
+    <li class="am-panel">
+        <a id="four"data-am-collapse="{parent: '#collapase-nav-1', target: '#four-nav'}">
+            <i class="am-margin-left-sm"></i>  4.  为什么支付成功，但没有开通会员？
+            <i id="four-icon" class="am-icon-angle-right am-fr am-margin-right"></i>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="four-nav">
+            <li><a href="#">
+                <p>请您首先核实订单是否支付成功，如订单未支付成功，则会员开通失败；也请您核实是否已登录VIP账号，并检查VIP账号是否已经到期；如您正确登录了账号并且VIP未到期，请您先尝试退出重新登录的方式，如仍未解决，请联系客服为您核实处理。</p>
+                <p>温馨提示：若您使用的是苹果手机，由于苹果ID支付属于国际支付渠道，比较特殊。1、支付连接较慢，可能存在到账延迟，支付成功后建议您稍后查看充值情况。2、苹果开通需要通过<script>document.write(app)</script>APP和苹果支付系统相关联，苹果ID付费成功后请不要立即关闭APP,需要保持APP和账号在线，以便成功开通会员权益。</p>
+            </a></li>
+        </ul>
+    </li>
+    <li class="am-panel">
+        <a id="five"data-am-collapse="{parent: '#collapase-nav-1', target: '#five-nav'}">
+            <i class="am-margin-left-sm"></i>  5.	不小心两次付费VIP会员怎么办？
+            <i id="five-icon" class="am-icon-angle-right am-fr am-margin-right"></i>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="five-nav">
+            <li><a href="#">
+                <p>同一账号重复支付的会员，会员时长自动累计叠加，建议重登账号查看使用。</p>
+            </a></li>
+        </ul>
+    </li>
+    <li class="am-panel">
+        <a id="six"data-am-collapse="{parent: '#collapase-nav-1', target: '#six-nav'}">
+            <i class="am-margin-left-sm"></i>  6.	连续包月/自动续费是从哪里扣费的？
+            <i id="six-icon" class="am-icon-angle-right am-fr am-margin-right"></i>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="six-nav">
+            <li><a href="#">
+                <p>连续包月套餐是从您支付时绑定的支付方式中扣除，若您不记得您的账号支付方式。</p>
+                <p>可打开手机客户端→缓存→设置→“计算题计算正确进入”→交易记录可查询您的支付方式。</p>
+                <p>温馨提示：具体付款账号无法查询。</p>
+            </a></li>
+        </ul>
+    </li>
+    <li class="am-panel">
+        <a id="seven"data-am-collapse="{parent: '#collapase-nav-1', target: '#seven-nav'}">
+            <i class="am-margin-left-sm"></i>  7.	如何取消连续包月/自动续费？
+            <i id="seven-icon" class="am-icon-angle-right am-fr am-margin-right"></i>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="seven-nav">
+            <li><a href="#">
+                <p>安卓用户:</p>
+                <p>具体步骤如下：打开【微信】→点击【我的】→点击【钱包】→点击右上角更多按钮→点击【支付管理】→点击【自动扣费】→选择<script>document.write(app)</script>VIP自动续费→点击【关闭服务】即可。</p>
+                <p>苹果用户:</p>
+                <p>具体步骤如下：打开手机【设置】-> 进入【iTunes Store 与 App Store】->点击【Apple ID】->选择【查看Apple ID】->进入【账户设置】页面->点击【订阅】->选择<script>document.write(app)</script>取消订阅即可。</p>
+            </a></li>
+        </ul>
+    </li>
+</ul>
+<div class="foot">
+    <a href="https://wj.qq.com/s/2068055/051f"><div class="questions">问题及建议</div></a>
+    <div class="ip">
+        <span class="ip1">联系客服</span>
+        <div class="ip2">
+            <p>400 0038 768</p>
+            <p class="ip3">(工作日10:30-17:00)</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    
+
+    // var div = document.getElementById("");
+    // function getQueryVariable(variable) {
+    //     var ids= window.location.search.split("id=")[1]
+    //     if(ids == 1){
+    //         document.getElementById("id").innerText = "儿歌点点";
+    //     }
+    //     if(ids == 2){
+    //         document.getElementById("id").innerText = "萌宝儿歌大全";
+    //     }
+    // }
+    // getQueryVariable()
+
+
+    window.onload=function(){
+        $('#web-nav').on('open.collapse.amui', function() {//open方法被调用时立即触发
+            $("#web #web-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {//close方法调用时立即触发
+            $("#web #web-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+
+        $('#bg-nav').on('open.collapse.amui', function() {
+            $("#bg #bg-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {
+            $("#bg #bg-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+
+        $('#database-nav').on('open.collapse.amui', function() {
+            $("#database #database-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {
+            $("#database #database-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+
+        $('#four-nav').on('open.collapse.amui', function() {
+            $("#four #four-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {
+            $("#four #four-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+
+        $('#five-nav').on('open.collapse.amui', function() {
+            $("#five #five-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {
+            $("#five #five-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+        $('#six-nav').on('open.collapse.amui', function() {
+            $("#six #six-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {
+            $("#six #six-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+
+        $('#seven-nav').on('open.collapse.amui', function() {
+            $("#seven #seven-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {
+            $("#seven #seven-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+        $('#eight-nav').on('open.collapse.amui', function() {
+            $("#eight #eight-icon").attr("class","am-icon-angle-down am-fr am-margin-right");
+        }).on('close.collapse.amui', function() {
+            $("#eight #eight-icon").attr("class","am-icon-angle-right am-fr am-margin-right");
+        });
+
+    }
+</script>

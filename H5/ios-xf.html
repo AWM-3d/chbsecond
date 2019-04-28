@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--自动适应移动屏幕-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--优先使用webkit内核渲染-->
+    <meta name="renderer" content="webkit">
+    <!--不要被百度转码-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>自动续费</title>
+    <!--以下是引入amazeui资源-->
+    <link href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.css" rel="stylesheet">
+    <!--<link href="css/折叠面板.css" rel="stylesheet">-->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" language="JavaScript" charset="utf-8"></script>
+    <!--以下是引入amazeui资源-->
+    <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js" language="JavaScript" charset="utf-8"></script>
+    <script>
+        function getQueryVariable(variable)
+        {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+        var app = getQueryVariable("app");
+        app = app ? decodeURI(app) : '萌宝儿歌大全';
+    </script>
+</head>
+<style>
+    .center{
+        padding: 1rem;
+    }
+    .header{
+        position: relative;
+        width: 100%;
+        height: 4rem;
+    }
+
+    .header>img{
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        margin-top: -.8rem;
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+    .header>span{
+        display: block;
+        width: 100%;
+        /*color: #19be6b;*/
+        font-size: 2rem;
+        line-height: 4rem;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <div>
+        <!--<div class="header">-->
+            <!--&lt;!&ndash;<img src="./img/1.png" alt="">&ndash;&gt;-->
+            <!--<span>自动续费</span>-->
+        <!--</div>-->
+        <div class="center">
+            <h5>连续包月/自动续费介绍</h5>
+            <div>
+                <p>订阅周期：连续包月为1个月。连续包月服务为您省去了每月手动续费的麻烦，省钱又省心，是万千用户首选！</p>
+                <p>付款：用户确认购买并付款后记入iTunes账户。</p>
+                <p>取消续订：如需取消续订，请在当前订阅周期到期前24小时以前，手动在iTunes/Apple ID设置管理中关闭自动续订功能。可按以下方法进行关闭。</p>
+                <p>打开苹果手机【设置】-> 进入【iTunes Store 与 App Store】->点击【Apple ID】->选择【查看Apple ID】->进入【账户设置】页面->点击【订阅】->选择<script>document.write(app)</script>取消订阅即可。</p>
+                <p>续订：苹果iTunes账户会在到期前24小时内扣费，扣费成功后订阅周期顺延。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+</script>

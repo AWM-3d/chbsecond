@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--自动适应移动屏幕-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--优先使用webkit内核渲染-->
+    <meta name="renderer" content="webkit">
+    <!--不要被百度转码-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>Title</title>
+    <!--以下是引入amazeui资源-->
+    <link href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.css" rel="stylesheet">
+    <!--<link href="css/折叠面板.css" rel="stylesheet">-->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" language="JavaScript" charset="utf-8"></script>
+    <!--以下是引入amazeui资源-->
+    <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js" language="JavaScript" charset="utf-8"></script>
+    <script>
+        function getQueryVariable(variable)
+        {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+        var app = getQueryVariable("app");
+        app = app ? decodeURI(app) : '萌宝儿歌大全';
+    </script>
+</head>
+        <a href="huiyuanxieyi.html">会员服务协议</a>
+        <a href="yinsizhengce.html">隐私政策</a>
+        <a href="lianxubaoyue.html">会员自动续费服务协议</a>
+        <a href="android-xf.html">安卓自动续费</a>
+        <a href="android.html">安卓常见问题</a>
+        <a href="gongzhonghao.html">公众号文章</a>
+        <a href="ios.html">苹果常见问题</a>
+        <a href="ios-xf">苹果自动续费</a>
+<body>
+
+</body>
+</html>
+

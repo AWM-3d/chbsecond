@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>儿歌点点</title>
+    <meta name="keywords" content=" 儿歌点点，儿歌大全，儿歌大全100首，热门儿歌，小猪佩奇" />
+    <meta name="description" content="100 万高清儿歌视频免费看，益智动画给宝宝轻松快乐的童年，下载应用更可以随时随地陪伴小朋友成长。" />
+    <meta name="csrf-token" content="H1jKZF6zODoLZNMKXyLFIh6pduUdcssQKyHp08EZ">
+    <!--<link rel="shortcut icon" href="/icon_64.png">-->
+    <link rel=”dns-prefetch” href="http://video5lmv.ergedd.com">
+    <!--<link rel="icon" type="image/x-icon" href="/icon_32.png">-->
+    <link rel="apple-touch-icon" href="/icon_128.png">
+    <meta name="mobile-agent" content="format=html5">
+    <meta name="theme-color" content="#42cc8c">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <!--<script src="//fs-ews.51h5.com/common/vendor/eruda-1.2.3.min.js"></script>-->
+
+    <script>
+        // eruda.init();
+        /*
+         * MD5() 输出为十六进制大写字符串
+         */
+        if (typeof faultylabs == 'undefined') {
+            faultylabs = {}
+        }
+
+        faultylabs.MD5 = function(data) {
+            // convert number to (unsigned) 32 bit hex, zero filled string
+            function to_zerofilled_hex(n) {
+                var t1 = (n >>> 0).toString(16)
+                return "00000000".substr(0, 8 - t1.length) + t1
+            }
+
+            // convert array of chars to array of bytes
+            function chars_to_bytes(ac) {
+                var retval = []
+                for (var i = 0; i < ac.length; i++) {
+                    retval = retval.concat(str_to_bytes(ac[i]))
+                }
+                return retval
+            }
+
+            // convert a 64 bit unsigned number to array of bytes. Little endian
+            function int64_to_bytes(num) {
+                var retval = []
+                for (var i = 0; i < 8; i++) {
+                    retval.push(num & 0xFF)
+                    num = num >>> 8
+                }
+                return retval
+            }
+
+            // 32 bit left-rotation
+            function rol(num, places) {
+                return ((num << places) & 0xFFFFFFFF) | (num >>> (32 - places))
+            }
+
+            // The 4 MD5 functions
+            function fF(b, c, d) {
+                return (b & c) | (~b & d)
+            }
+
+            function fG(b, c, d) {
+                return (d & b) | (~d & c)
+            }
+
+            function fH(b, c, d) {
+                return b ^ c ^ d
+            }
+
+            function fI(b, c, d) {
+                return c ^ (b | ~d)
+            }
+
+            // pick 4 bytes at specified offset. Little-endian is assumed
+            function bytes_to_int32(arr, off) {
+                return (arr[off + 3] << 24) | (arr[off + 2] << 16)
+                    | (arr[off + 1] << 8) | (arr[off])
+            }
+
+            /*
+             * Conver string to array of bytes in UTF-8 encoding See:
+             * http://www.dangrossman.info/2007/05/25/handling-utf-8-in-javascript-php-and-non-utf8-databases/
+             * http://stackoverflow.com/questions/1240408/reading-bytes-from-a-javascript-string
+             * How about a String.getBytes(<ENCODING>) for Javascript!? Isn't it time
+             * to add it?
+             */
+            function str_to_bytes(str) {
+                var retval = []
+                for (var i = 0; i < str.length; i++)
+                    if (str.charCodeAt(i) <= 0x7F) {
+                        retval.push(str.charCodeAt(i))
+                    } else {
+                        var tmp = encodeURIComponent(str.charAt(i)).substr(1)
+                            .split('%')
+                        for (var j = 0; j < tmp.length; j++) {
+                            retval.push(parseInt(tmp[j], 0x10))
+                        }
+                    }
+                return retval
+            }
+
+            // convert the 4 32-bit buffers to a 128 bit hex string. (Little-endian is
+            // assumed)
+            function int128le_to_hex(a, b, c, d) {
+                var ra = ""
+                var t = 0
+                var ta = 0
+                for (var i = 3; i >= 0; i--) {
+                    ta = arguments[i]
+                    t = (ta & 0xFF)
+                    ta = ta >>> 8
+                    t = t << 8
+                    t = t | (ta & 0xFF)
+                    ta = ta >>> 8
+                    t = t << 8
+                    t = t | (ta & 0xFF)
+                    ta = ta >>> 8
+                    t = t << 8
+                    t = t | ta
+                    ra = ra + to_zerofilled_hex(t)
+                }
+                return ra
+            }
+
+            // conversion from typed byte array to plain javascript array
+            function typed_to_plain(tarr) {
+                var retval = new Array(tarr.length)
+                for (var i = 0; i < tarr.length; i++) {
+                    retval[i] = tarr[i]
+                }
+                return retval
+            }
+
+            // check input data type and perform conversions if needed
+            var databytes = null
+            // String
+            var type_mismatch = null
+            if (typeof data == 'string') {
+                // convert string to array bytes
+                databytes = str_to_bytes(data)
+            } else if (data.constructor == Array) {
+                if (data.length === 0) {
+                    // if it's empty, just assume array of bytes
+                    databytes = data
+                } else if (typeof data[0] == 'string') {
+                    databytes = chars_to_bytes(data)
+                } else if (typeof data[0] == 'number') {
+                    databytes = data
+                } else {
+                    type_mismatch = typeof data[0]
+                }
+            } else if (typeof ArrayBuffer != 'undefined') {
+                if (data instanceof ArrayBuffer) {
+                    databytes = typed_to_plain(new Uint8Array(data))
+                } else if ((data instanceof Uint8Array) || (data instanceof Int8Array)) {
+                    databytes = typed_to_plain(data)
+                } else if ((data instanceof Uint32Array)
+                    || (data instanceof Int32Array)
+                    || (data instanceof Uint16Array)
+                    || (data instanceof Int16Array)
+                    || (data instanceof Float32Array)
+                    || (data instanceof Float64Array)) {
+                    databytes = typed_to_plain(new Uint8Array(data.buffer))
+                } else {
+                    type_mismatch = typeof data
+                }
+            } else {
+                type_mismatch = typeof data
+            }
+
+            if (type_mismatch) {
+                // alert('MD5 type mismatch, cannot process ' + type_mismatch)
+            }
+
+            function _add(n1, n2) {
+                return 0x0FFFFFFFF & (n1 + n2)
+            }
+
+            return do_digest()
+
+            function do_digest() {
+
+                // function update partial state for each run
+                function updateRun(nf, sin32, dw32, b32) {
+                    var temp = d
+                    d = c
+                    c = b
+                    // b = b + rol(a + (nf + (sin32 + dw32)), b32)
+                    b = _add(b, rol(_add(a, _add(nf, _add(sin32, dw32))), b32))
+                    a = temp
+                }
+
+                // save original length
+                var org_len = databytes.length
+
+                // first append the "1" + 7x "0"
+                databytes.push(0x80)
+
+                // determine required amount of padding
+                var tail = databytes.length % 64
+                // no room for msg length?
+                if (tail > 56) {
+                    // pad to next 512 bit block
+                    for (var i = 0; i < (64 - tail); i++) {
+                        databytes.push(0x0)
+                    }
+                    tail = databytes.length % 64
+                }
+                for (i = 0; i < (56 - tail); i++) {
+                    databytes.push(0x0)
+                }
+                // message length in bits mod 512 should now be 448
+                // append 64 bit, little-endian original msg length (in *bits*!)
+                databytes = databytes.concat(int64_to_bytes(org_len * 8))
+
+                // initialize 4x32 bit state
+                var h0 = 0x67452301
+                var h1 = 0xEFCDAB89
+                var h2 = 0x98BADCFE
+                var h3 = 0x10325476
+
+                // temp buffers
+                var a = 0, b = 0, c = 0, d = 0
+
+                // Digest message
+                for (i = 0; i < databytes.length / 64; i++) {
+                    // initialize run
+                    a = h0
+                    b = h1
+                    c = h2
+                    d = h3
+
+                    var ptr = i * 64
+
+                    // do 64 runs
+                    updateRun(fF(b, c, d), 0xd76aa478, bytes_to_int32(databytes, ptr),
+                        7)
+                    updateRun(fF(b, c, d), 0xe8c7b756, bytes_to_int32(databytes, ptr
+                        + 4), 12)
+                    updateRun(fF(b, c, d), 0x242070db, bytes_to_int32(databytes, ptr
+                        + 8), 17)
+                    updateRun(fF(b, c, d), 0xc1bdceee, bytes_to_int32(databytes, ptr
+                        + 12), 22)
+                    updateRun(fF(b, c, d), 0xf57c0faf, bytes_to_int32(databytes, ptr
+                        + 16), 7)
+                    updateRun(fF(b, c, d), 0x4787c62a, bytes_to_int32(databytes, ptr
+                        + 20), 12)
+                    updateRun(fF(b, c, d), 0xa8304613, bytes_to_int32(databytes, ptr
+                        + 24), 17)
+                    updateRun(fF(b, c, d), 0xfd469501, bytes_to_int32(databytes, ptr
+                        + 28), 22)
+                    updateRun(fF(b, c, d), 0x698098d8, bytes_to_int32(databytes, ptr
+                        + 32), 7)
+                    updateRun(fF(b, c, d), 0x8b44f7af, bytes_to_int32(databytes, ptr
+                        + 36), 12)
+                    updateRun(fF(b, c, d), 0xffff5bb1, bytes_to_int32(databytes, ptr
+                        + 40), 17)
+                    updateRun(fF(b, c, d), 0x895cd7be, bytes_to_int32(databytes, ptr
+                        + 44), 22)
+                    updateRun(fF(b, c, d), 0x6b901122, bytes_to_int32(databytes, ptr
+                        + 48), 7)
+                    updateRun(fF(b, c, d), 0xfd987193, bytes_to_int32(databytes, ptr
+                        + 52), 12)
+                    updateRun(fF(b, c, d), 0xa679438e, bytes_to_int32(databytes, ptr
+                        + 56), 17)
+                    updateRun(fF(b, c, d), 0x49b40821, bytes_to_int32(databytes, ptr
+                        + 60), 22)
+                    updateRun(fG(b, c, d), 0xf61e2562, bytes_to_int32(databytes, ptr
+                        + 4), 5)
+                    updateRun(fG(b, c, d), 0xc040b340, bytes_to_int32(databytes, ptr
+                        + 24), 9)
+                    updateRun(fG(b, c, d), 0x265e5a51, bytes_to_int32(databytes, ptr
+                        + 44), 14)
+                    updateRun(fG(b, c, d), 0xe9b6c7aa, bytes_to_int32(databytes, ptr),
+                        20)
+                    updateRun(fG(b, c, d), 0xd62f105d, bytes_to_int32(databytes, ptr
+                        + 20), 5)
+                    updateRun(fG(b, c, d), 0x2441453, bytes_to_int32(databytes, ptr
+                        + 40), 9)
+                    updateRun(fG(b, c, d), 0xd8a1e681, bytes_to_int32(databytes, ptr
+                        + 60), 14)
+                    updateRun(fG(b, c, d), 0xe7d3fbc8, bytes_to_int32(databytes, ptr
+                        + 16), 20)
+                    updateRun(fG(b, c, d), 0x21e1cde6, bytes_to_int32(databytes, ptr
+                        + 36), 5)
+                    updateRun(fG(b, c, d), 0xc33707d6, bytes_to_int32(databytes, ptr
+                        + 56), 9)
+                    updateRun(fG(b, c, d), 0xf4d50d87, bytes_to_int32(databytes, ptr
+                        + 12), 14)
+                    updateRun(fG(b, c, d), 0x455a14ed, bytes_to_int32(databytes, ptr
+                        + 32), 20)
+                    updateRun(fG(b, c, d), 0xa9e3e905, bytes_to_int32(databytes, ptr
+                        + 52), 5)
+                    updateRun(fG(b, c, d), 0xfcefa3f8, bytes_to_int32(databytes, ptr
+                        + 8), 9)
+                    updateRun(fG(b, c, d), 0x676f02d9, bytes_to_int32(databytes, ptr
+                        + 28), 14)
+                    updateRun(fG(b, c, d), 0x8d2a4c8a, bytes_to_int32(databytes, ptr
+                        + 48), 20)
+                    updateRun(fH(b, c, d), 0xfffa3942, bytes_to_int32(databytes, ptr
+                        + 20), 4)
+                    updateRun(fH(b, c, d), 0x8771f681, bytes_to_int32(databytes, ptr
+                        + 32), 11)
+                    updateRun(fH(b, c, d), 0x6d9d6122, bytes_to_int32(databytes, ptr
+                        + 44), 16)
+                    updateRun(fH(b, c, d), 0xfde5380c, bytes_to_int32(databytes, ptr
+                        + 56), 23)
+                    updateRun(fH(b, c, d), 0xa4beea44, bytes_to_int32(databytes, ptr
+                        + 4), 4)
+                    updateRun(fH(b, c, d), 0x4bdecfa9, bytes_to_int32(databytes, ptr
+                        + 16), 11)
+                    updateRun(fH(b, c, d), 0xf6bb4b60, bytes_to_int32(databytes, ptr
+                        + 28), 16)
+                    updateRun(fH(b, c, d), 0xbebfbc70, bytes_to_int32(databytes, ptr
+                        + 40), 23)
+                    updateRun(fH(b, c, d), 0x289b7ec6, bytes_to_int32(databytes, ptr
+                        + 52), 4)
+                    updateRun(fH(b, c, d), 0xeaa127fa, bytes_to_int32(databytes, ptr),
+                        11)
+                    updateRun(fH(b, c, d), 0xd4ef3085, bytes_to_int32(databytes, ptr
+                        + 12), 16)
+                    updateRun(fH(b, c, d), 0x4881d05, bytes_to_int32(databytes, ptr
+                        + 24), 23)
+                    updateRun(fH(b, c, d), 0xd9d4d039, bytes_to_int32(databytes, ptr
+                        + 36), 4)
+                    updateRun(fH(b, c, d), 0xe6db99e5, bytes_to_int32(databytes, ptr
+                        + 48), 11)
+                    updateRun(fH(b, c, d), 0x1fa27cf8, bytes_to_int32(databytes, ptr
+                        + 60), 16)
+                    updateRun(fH(b, c, d), 0xc4ac5665, bytes_to_int32(databytes, ptr
+                        + 8), 23)
+                    updateRun(fI(b, c, d), 0xf4292244, bytes_to_int32(databytes, ptr),
+                        6)
+                    updateRun(fI(b, c, d), 0x432aff97, bytes_to_int32(databytes, ptr
+                        + 28), 10)
+                    updateRun(fI(b, c, d), 0xab9423a7, bytes_to_int32(databytes, ptr
+                        + 56), 15)
+                    updateRun(fI(b, c, d), 0xfc93a039, bytes_to_int32(databytes, ptr
+                        + 20), 21)
+                    updateRun(fI(b, c, d), 0x655b59c3, bytes_to_int32(databytes, ptr
+                        + 48), 6)
+                    updateRun(fI(b, c, d), 0x8f0ccc92, bytes_to_int32(databytes, ptr
+                        + 12), 10)
+                    updateRun(fI(b, c, d), 0xffeff47d, bytes_to_int32(databytes, ptr
+                        + 40), 15)
+                    updateRun(fI(b, c, d), 0x85845dd1, bytes_to_int32(databytes, ptr
+                        + 4), 21)
+                    updateRun(fI(b, c, d), 0x6fa87e4f, bytes_to_int32(databytes, ptr
+                        + 32), 6)
+                    updateRun(fI(b, c, d), 0xfe2ce6e0, bytes_to_int32(databytes, ptr
+                        + 60), 10)
+                    updateRun(fI(b, c, d), 0xa3014314, bytes_to_int32(databytes, ptr
+                        + 24), 15)
+                    updateRun(fI(b, c, d), 0x4e0811a1, bytes_to_int32(databytes, ptr
+                        + 52), 21)
+                    updateRun(fI(b, c, d), 0xf7537e82, bytes_to_int32(databytes, ptr
+                        + 16), 6)
+                    updateRun(fI(b, c, d), 0xbd3af235, bytes_to_int32(databytes, ptr
+                        + 44), 10)
+                    updateRun(fI(b, c, d), 0x2ad7d2bb, bytes_to_int32(databytes, ptr
+                        + 8), 15)
+                    updateRun(fI(b, c, d), 0xeb86d391, bytes_to_int32(databytes, ptr
+                        + 36), 21)
+
+                    // update buffers
+                    h0 = _add(h0, a)
+                    h1 = _add(h1, b)
+                    h2 = _add(h2, c)
+                    h3 = _add(h3, d)
+                }
+                // Done! Convert buffers to 128 bit (LE)
+                return int128le_to_hex(h3, h2, h1, h0).toUpperCase()
+            }
+
+        }
+        console.log('3');
+    </script>
+
+    <style>
+        html{
+            font-size: calc(100vw/18.75) !important;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+        }
+        .back_img{
+            width: 100%;
+            height: 100%;
+        }
+        .wz{
+            font-size: 0.65rem;
+            color: #999999;
+            text-align: center;
+            position: absolute;
+            top: 3.6rem;
+            left: 50%;
+            width: 9.3rem;
+            margin-left: -4.65rem;
+        }
+        .one{
+            width: 16.5rem;
+            height: 2.2rem;
+            border-radius: 1.1rem;
+            background: #F8F8F8;
+            position: absolute;
+            top: 6.05rem;
+            left: 50%;
+            margin-left: -8.25rem;
+            /*display: flex;*/
+            /*align-items: center;*/
+        }
+        .one>img{
+            width: .9rem;
+            height: .9rem;
+            position: absolute;
+            left: .75rem;
+            /*bottom: .24rem;*/
+            /*align-items: center;*/
+            top: 50%;
+            transform:translateY(-50%);
+        }
+
+        .two{
+            width: 16.5rem;
+            height: 2.2rem;
+            border-radius: 1.1rem;
+            background: #F8F8F8;
+            position: absolute;
+            top: 8.75rem;
+            left: 50%;
+            margin-left: -8.25rem;
+            /*display: flex;*/
+            /*align-items: center;*/
+        }
+        .two .le{
+            width: .9rem;
+            height: .8rem;
+            position: absolute;
+            left: .85rem;
+            /*align-items: center;*/
+            top: 50%;
+            transform:translateY(-50%);
+        }
+        .two .ri{
+            width: .75rem;
+            height: .4rem;
+            position: absolute;
+            right: .75rem;
+            top: 50%;
+            transform:translateY(-50%);
+        }
+        .three{
+            width: 16.5rem;
+            height: 2.2rem;
+            border-radius: 1.1rem;
+            background: #F8F8F8;
+            position: absolute;
+            top: 11.45rem;
+            left: 50%;
+            margin-left: -8.25rem;
+        }
+        .three>img{
+            width: .9rem;
+            height: .9rem;
+            position: absolute;
+            left: .9rem;
+            /*align-items: center;*/
+            top: 50%;
+            transform:translateY(-50%);
+        }
+        .four{
+            width: 16.5rem;
+            height: 2.2rem;
+            border-radius: 1.1rem;
+            background: #F8F8F8;
+            position: absolute;
+            top: 14.15rem;
+            left: 50%;
+            margin-left: -8.25rem;
+        }
+        .four>img{
+            width: .9rem;
+            height: .9rem;
+            position: absolute;
+            left: .9rem;
+            /*align-items: center;*/
+            top: 50%;
+            transform:translateY(-50%);
+        }
+        #btnSendCode1{
+            width: 5rem;
+            height: 2.2rem;
+            border-radius: 0 1.1rem 1.1rem 0;
+            background: #999999;
+            position: absolute;
+            right: 0;
+            font-size: .7rem;
+            color: #ffffff;
+            outline: none;
+            -webkit-appearance: none;
+            border:1px #999999 solid;
+        }
+        .right>span{
+            display: block;
+            text-align: center;
+            line-height: 2.2rem;
+            font-family: PingFangSC-Regular;
+        }
+        .input{
+            width: 9.75rem;
+            height: 2.2rem;
+            position: absolute;
+            left: 5.75rem;
+            background-color:transparent;
+            border-style:none;
+            outline: none;
+            color: #333333FF;
+            font-size: .65rem;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+            color: #C4C4C4;
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #C4C4C4;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #C4C4C4;
+        }
+        input:-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: #C4C4C4;
+        }
+        .yi{
+            width: 5.5rem;
+        }
+        .yuan{
+            width: .75rem;
+            height: .75rem;
+            position: absolute;
+            top: 17rem;
+            left: 1.15rem;
+        }
+        .tk{
+            width: 15.5rem;
+            font-family: PingFangSC-Regular;
+            font-size: .6rem;
+            color: #999999;
+            position: absolute;
+            top: 16.9rem;
+            left: 2.1rem;
+        }
+
+        .foot .zuo{
+            width: 4.5rem;
+            height: 1.7rem;
+            background: #999999;
+            border-radius:.85rem;
+            position: absolute;
+            top: 20.15rem;
+            left: 2.45rem;
+            font-size: .7rem;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1.7rem;
+        }
+        .foot .you{
+            width: 4.5rem;
+            height: 1.7rem;
+            background: #C6C6C6;
+            border-radius: .85rem;
+            position: absolute;
+            top: 20.15rem;
+            left: 11.85rem;
+            font-size: .7rem;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1.7rem;
+            outline: none;
+            -webkit-appearance: none;
+            border:none;
+        }
+        .bt{
+            font-size: .7rem;
+            color: #777777;
+            font-family: PingFangSC-Regular;
+            position: absolute;
+            line-height: 2.2rem;
+            left: 2.25rem;
+            font-weight: Regular;
+        }
+        #op{
+            width: 6.5rem;
+            height: 1.95rem;
+            position: absolute;
+            top: 10rem;
+            left: 6.15rem;
+        }
+        #yearwrapper ul li, #monthwrapper ul li, #daywrapper ul li{
+            font-size:0.33rem;
+        }
+        .getDateBox .choiceDateTitle {
+            height: .933rem;
+            background-color: #f2f2f2;
+        }
+        .getDateBox .choiceDateTitle button {
+            height: 100%;
+            padding: 0 .333rem;
+            color: #00c599;
+            font-size: 0.4rem;
+            background: none;
+            border: 0;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.2);
+        }
+        .getDateBox .dateContent {
+            width: 100%;
+            margin: 1rem 0;
+            height: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        img{
+            vertical-align:top;
+            border:none;
+        }
+        .box1{
+            width: 100%;
+            height: 36.2rem;
+            /*position: absolute;*/
+            /*top:0;*/
+        }
+        .box1 .back_img{
+            width: 100%;
+            height: auto;
+        }
+        .box1 .huoqu{
+            width: 7.25rem;
+            height: 1.55rem;
+            font-family: PingFangSC-Light;
+            font-size: .7rem;
+            color: #666666FF;
+            position: absolute;
+            left: 9.45rem;
+            top: 3.875rem;
+        }
+        .box1 .tu1{
+            width: 100%;
+            height: auto;
+        }
+        .box1 .tu2{
+            width: 100%;
+            height: auto;
+        }
+        .weui-picker-modal .picker-item{
+            padding: 0 1.5rem;
+        }
+        .weui-picker-modal .picker-items-col-wrapper{
+            touch-action: none;
+        }
+        .iphoneX,.gxlb{
+            width: 6.5rem;
+            height: 1.95rem;
+            border-radius: 1rem;
+            color: white;
+            background-color: black;
+            text-align: center;
+            opacity: 0.7;
+            font-size: .75rem;
+            line-height: 1.95rem;
+            font-family: PingFangSC-Regular;
+            position: absolute;
+            top: 10rem;
+            left: 6.15rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img class="back_img" src="https://aud3ip5.ergedd.com/h5/vipkid/1/back.jpg" alt="" >
+    <div class="wz">提交信息解锁本专辑所有集数</div>
+    <div class="one">
+        <img src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon1.png" alt="">
+        <input id="text1" class="input" placeholder="请输入宝宝昵称"  value="" oninput="checkFormValue()">
+        <span class="bt">宝宝昵称</span>
+    </div>
+    <div class="two">
+        <img class="le" src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon2.png" alt="">
+        <span class="bt">宝宝生日</span>
+        <input id='datetime-picker' class="input dateSelectorOne"  placeholder="请选择宝宝生日" value="" readonly="readonly" onClick="down()" oninput="checkFormValue()">
+        <img  id="outDay" class="ri" src="https://aud3ip5.ergedd.com/h5/vipkid/1/sanjiao.png" alt="" >
+    </div>
+    <div class="three">
+        <img src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon3.png" alt="">
+        <span class="bt">手机号</span>
+        <input class="input" id="phone1" type="tel"  autocomplete="off" placeholder="请输入您的手机号" oninput="checkFormValue()" style="ime-mode:disabled;">
+    </div>
+    <div class="iphoneX">手机号码错误</div>
+    <div class="four">
+        <img src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon4.png" alt="">
+        <span class="bt">验证码</span>
+        <input id="text4" class="input yi" type="tel" placeholder="请输入短信验证码" value="" oninput="checkFormValue()">
+        <input id="btnSendCode1" type="button" class="btn btn-default" value="获取验证码" onClick="sendMessage1()" />
+    </div>
+    <!--<div class="right" id="btnSendCode1" onClick="sendMessage1()">-->
+    <!--<span>获取验证码</span>-->
+    <!--</div>-->
+
+        <img class="yuan"  id="xuanze" src="https://aud3ip5.ergedd.com/h5/vipkid/1/yuan.png" alt="" onClick="choose()">
+        <!--<input type="checkbox" id="gou"/>-->
+        <img class="yuan" id="xuanze1" src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon5.png" style="display: none" onClick="choose()">
+        <div class="tk" onClick="choose()">同时获得VIPKID288元北美外教试听礼包,以上信息将提供VIPKID,并可能接到回访电话.</div>
+        <input name="iconValue" id="iconV" type="hidden" value="off">
+        <div class="gxlb">请勾选礼包</div>
+    <div class="foot">
+        <div class="zuo" onClick="cancel()">取消</div>
+        <button class="you" onClick="put()">提交</button>
+    </div>
+    <img id="op" src="https://aud3ip5.ergedd.com/h5/vipkid/1/t.png" alt="" style="display: none">
+</div>
+
+<div class="box1" style="display: none">
+    <img class="back_img" src="https://aud3ip5.ergedd.com/h5/vipkid/1/land_out3.png" alt="">
+    <!--<div class="huoqu">获赠VIPKID 288元北美外教试听礼包</div>-->
+    <img class="tu1" src="https://aud3ip5.ergedd.com/h5/vipkid/1/land_out4.png" alt="">
+    <img class="tu2" src="https://aud3ip5.ergedd.com/h5/vipkid/1/land_out5.png" alt="">
+</div>
+</body>
+</html>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+
+<script>
+
+
+    var flag=true;
+    var reg = /^[A-Za-z0-9]{8}/; // 昵称8字符正则
+    var phoneReg = /^1[3|4|5|6|7|8]\d{1}\s\d{4}\s\d{4}$/;//手机号正则
+    // var phoneReg =  /^1\d{10}$/;
+    var count = 60; //间隔函数，1秒执行
+    var InterValObj1; //timer变量，控制时间
+    var curCount1;//当前剩余秒数
+    var par = [];
+
+    //软键盘遮挡问题
+    function down() {
+        $("#text1").blur();
+        $("#phone1").blur();
+        $("#text4").blur();
+    }
+    $("input").focus(function(){
+        $(".iphoneX").css("display","none");
+        $("#op").css("display","none");
+        $(".three").css("background","#F8F8F8");
+    });
+    // 取消为空
+    function cancel() {
+        $("#text1").val("");
+        $(".dateSelectorOne").val("");
+        $("#phone1").val("");
+        $("#text4").val("");
+        $("#op").css("display","none");
+    }
+
+    function checkFormValue(){
+        var phone_num = $("#phone1").val();
+        var name =  $("#text1").val();
+        var birthday = $("#datetime-picker").val();
+        var code = $("#text4").val();
+        console.log(phoneReg.test(phone_num))
+        console.log("conao",name)
+        console.log("coqqqnao",$("#iconV").val())
+
+        if(name.length<8  && name.length>=1 && phoneReg.test(phone_num) && birthday!="" && code!="" && $("#iconV").val()=="on"){
+            $(".you").css("background","#45D190");
+            console.log("css")
+        }else{
+            $(".you").css("background","#C6C6C6");
+        }
+    }
+
+
+    //QueryString url
+    //时间戳函数
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        var D = date.getDate() + ' ';
+        return Y+M+D;
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        var q = window.location.pathname.substr(1).match(reg_rewrite);
+        if(r != null){
+            return unescape(r[2]);
+        }else if(q != null){
+            return unescape(q[2]);
+        }else{
+            return null;
+        }
+    }
+    var uuid = getQueryString("uuid");
+    var ruleId = getQueryString("ruleid");
+    var birthday = getQueryString("birthday");
+    var os = getQueryString("os");
+    if(os == "ergedd"){
+        var appkey = "ysoeswqxxhwdjsrc";
+        var appSecret = "qafLsoox18z34vM4lPrnKlMtTghrB9xF";
+    }else{
+        var appkey = "mtirjcfyvxgbchnj";
+        var appSecret = "3C49FnPkqGpTMu9nbNypFaoukuNbM7Cm";
+    }
+
+    console.log("init",birthday)
+    //日期插件初始化
+    if(birthday != "0"){
+        console.log("========",timestampToTime(birthday))
+        $("#datetime-picker").val(timestampToTime(birthday));
+    }
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var current = year + "-" + month + "-" + strDate + " " + hour + ":" + minute;
+    console.log('current:',year,current);
+
+    $("#datetime-picker").datetimePicker({
+        title: '请选择日期',
+        years: [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],
+        // min: "1990-1-1",
+        max: current,
+        times: function () {
+            return [];
+        },
+        onChange: function (picker, values, displayValues) {
+            console.log(values,picker,displayValues);
+        }
+    });
+
+    //手机号加空格
+    $("#phone1").on('keyup', function (){
+        var val = $.trim($('#phone1').val());
+        var that = $(this);
+        var value = that.val();
+        value = value.replace(/[^0-9]/ig, "");
+        var arr = value.split('');
+        if (arr.length >= 4) {
+            arr.splice(3, 0, ' ');
+        }
+        if (arr.length >= 9) {
+            arr.splice(8, 0, ' ');
+        }
+        value = arr.join('');
+        that.val(value);
+
+        console.log('length',arr.length)
+        if (val.length >= 13){
+            $("#phone1").blur();
+            if(!phoneReg.test(val)){
+                $(".iphoneX").css("display","block");
+                $(".three").css("background","#fbeded");
+                setTimeout(function () {
+                    $(".iphoneX").css("display","none");
+                },3000);
+            }else {
+                $("#btnSendCode1").css("background-color","#45D190");
+                $("#btnSendCode1").css("border","#45D190");
+            }
+        }
+    });
+
+    // 判断手机号码正确
+    function sendMessage1() {
+    // $(document).on("click", "#btnSendCode1",function () {
+        curCount1 = count;
+        var phone = $.trim($('#phone1').val());
+        if (!phoneReg.test(phone)) {
+            $(".iphoneX").css("display","block");
+            $(".three").css("background","#fbeded");
+            setTimeout(function () {
+                $(".iphoneX").css("display","none");
+            },3000);
+            // alert(" 请输入有效的手机号码");
+            // return false;
+        }else {
+            //设置button效果，开始计时
+            $("#btnSendCode1").css("background","#C6C6C6");
+            $("#btnSendCode1").attr("disabled", "true");
+            $("#btnSendCode1").val(+curCount1 + "S再获取");
+            $("#op").css("display","none");
+            InterValObj1 = window.setInterval(SetRemainTime1, 1000); //启动计时器，1秒执行一次
+            //向后台发送处理数据
+            var phone_n = $.trim($("#phone1").val());
+            var str = phone_n.valueOf(phone_n)
+            var phone_num = str.replace(/\s*/g,"");
+            if (phone_num != "") {
+
+                // 数组排序
+                function objKeySort(obj) {
+                    var newkey = Object.keys(obj).sort();
+                    //先用Object内置类的keys方法获取要排序对象的属性名，再利用Array原型上的sort方法对获取的属性名进行排序，newkey是一个数组
+                    var newObj = {};//创建一个新的对象，用于存放排好序的键值对
+                    for (var i = 0; i < newkey.length; i++) {//遍历newkey数组
+                        newObj[newkey[i]] = obj[newkey[i]];//向新创建的对象中按照排好的顺序依次增加键值对
+                    }
+                    return newObj;//返回排好序的新对象
+                }
+
+                par['app'] = appkey;
+                par['tel'] = phone_num;
+                par['time'] = new Date().getTime();
+                // par = objKeySort(par);
+                //
+                // let arr = [];
+                // for(let key in par){
+                //     arr.push(key+'='+par[key]);
+                // }
+                // par['sign'] = hex_md5(arr.join('&') + '3C49FnPkqGpTMu9nbNypFaoukuNbM7Cm');
+                // arr.push('sign='+par['sign']);
+
+                var ext = makeSignPar(par);
+                console.log('ext',ext);
+                $.ajax({
+                    url: "https://ddadv.ergedd.com/api/sms/sendtelcode",
+                    type: "post",
+                    dataType: 'json',
+                    data: ext,
+                    success: function (res) {
+                        console.log(res)
+                        if(res.success = false){
+
+                        }
+                    }
+                })
+            }
+        }
+    }
+    function makeSignPar(obj){
+
+        var newkey = Object.keys(obj).sort();
+        var newObj = {};
+        for (var i = 0; i < newkey.length; i++) {
+            newObj[newkey[i]] = obj[newkey[i]];//向新创建的对象中按照排好的顺序依次增加键值对
+        }
+
+        var par = newObj;
+        var arr = [];
+        for(var key in par){
+            arr.push(key+'='+(par[key]));
+        }
+        par['sign'] = faultylabs.MD5(arr.join('&') + appSecret);
+        arr.push('sign='+par['sign']);
+        console.log(par);
+        return arr.join('&');
+    }
+
+    //  重新发送
+    function SetRemainTime1() {
+        if (curCount1 == 0) {
+            window.clearInterval(InterValObj1);//停止计时器
+            $("#btnSendCode1").removeAttr("disabled");//启用按钮
+            $("#btnSendCode1").css("background-color","#45D190");
+            $("#btnSendCode1").css("border","#45D190");
+            $("#btnSendCode1").val("重新发送");
+            // $("#op").css("display","block");
+        }
+        else {
+            $("#btnSendCode1").css("background","#C6C6C6");
+            curCount1--;
+            $("#btnSendCode1").val( + curCount1 + "S再获取");
+
+        }
+    }
+    //提交按钮变颜色
+    function choose() {
+        console.log("chooooooo")
+        var phone_num = $("#phone1").val();
+        var name =  $("#text1").val();
+        var birthday = $(".dateSelectorOne").val();
+        var code = $("#text4").val();
+
+        if($("#iconV").val()=="off"){
+            $("#xuanze1").css("display","block");
+            $(".gxlb").css("display","none");
+            $("#iconV").val("on");
+        }else{
+            $("#xuanze1").css("display","none");
+            $("#iconV").val("off");
+            // $(".you").css("background","#C6C6C6");
+        }
+        if(name.length<8  && name.length>=1 && phoneReg.test(phone_num) && birthday!="" && code!="" && $("#iconV").val()=="on"){
+            $(".you").css("background","#45D190");
+        }else{
+            $(".you").css("background","#C6C6C6");
+        }
+
+    }
+
+    // 提交
+    function put(){
+        console.log("tijiao")
+        var phone_num = $.trim($("#phone1").val());
+        var str = phone_num.valueOf(phone_num)
+        var telstrin = str.replace(/\s*/g,"");
+        console.log(telstrin);
+        var name =  $("#text1").val();
+        var birthday = $.trim($("#datetime-picker").val());
+        var code = $("#text4").val();
+
+        console.log("kkkkkkk",flag)
+        if($("#iconV").val() == "off"){
+
+            $(".gxlb").css("display","block");
+
+            // alert("请勾选获得礼包")
+            // return false;
+            setTimeout(function () {
+                $(".gxlb").css("display","none");
+            },3000);
+        }
+
+        if(name.length<8  && name.length>=1 && phoneReg.test(phone_num) && birthday!="" && code!=""&& $("#iconV").val()=="on" ){
+            // flag=false;
+            $(".you").css("background","#45D190");
+
+            var ext = makeSignPar({
+                // app:"mtirjcfyvxgbchnj", //萌宝儿歌
+                app: appkey,   //儿歌点点
+                birthday: birthday,
+                nick: name,
+                tel: telstrin,
+                code: code,
+                time:new Date().getTime(),
+                // uuid: "ffffffff-eb54-56a7-ffff-ffffc7dc763d",
+                tag: "vipkid",
+                uuid: uuid,
+                ruleId: ruleId,
+            });
+
+            console.log("ext",ext);
+            $.ajax({
+                url: "https://ddadv.ergedd.com/api/custom/info",
+                type: "post",
+                dataType: 'json',
+                data: ext,
+                success: function (res) {
+                    if (res.success == true) {
+                        // document.getElementById('tj').disabled = true; //true禁用
+                        if(window.hasOwnProperty('native')){
+                            window.native.advSuccessCallback(ruleId,ext);
+                        }
+                        $(".box1").css("display","block");
+                        $(".you").css("background","#C6C6C6");
+                        $(".box").css("display","none");
+                    }else {
+                        // flag=true
+                        $("#op").css("display","block");
+                        $(".four").css("background","#fbeded");
+                        setTimeout(function () {
+                            $("#op").css("display","none");
+                        },3000);
+                    }
+                }
+            })
+        }
+    }
+</script>

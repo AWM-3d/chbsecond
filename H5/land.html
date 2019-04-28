@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>儿歌点点</title>
+    <meta name="keywords" content=" 儿歌点点，儿歌大全，儿歌大全100首，热门儿歌，小猪佩奇" />
+    <meta name="description" content="100 万高清儿歌视频免费看，益智动画给宝宝轻松快乐的童年，下载应用更可以随时随地陪伴小朋友成长。" />
+    <meta name="csrf-token" content="H1jKZF6zODoLZNMKXyLFIh6pduUdcssQKyHp08EZ">
+    <link rel="shortcut icon" href="/icon_64.png">
+    <link rel=”dns-prefetch” href="http://video5lmv.ergedd.com">
+    <link rel="icon" type="image/x-icon" href="/icon_32.png">
+    <link rel="apple-touch-icon" href="/icon_128.png">
+    <meta name="mobile-agent" content="format=html5">
+    <meta name="theme-color" content="#42cc8c">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="https://aud3ip5.ergedd.com/h5/vipkid/2/iScroll.js"></script>
+    <script src="https://aud3ip5.ergedd.com/h5/vipkid/2/Mdate1.js"></script>
+
+    <style>
+        html{
+            font-size: calc(100vw/7.5);
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: absolute;
+            bottom: 0;
+        }
+        .back_img{
+            width: 100%;
+            height: auto;
+        }
+        .wz{
+            font-size: 0.26rem;
+            color: #999999;
+            text-align: center;
+            position: absolute;
+            top: 1.44rem;
+            left: 50%;
+            margin-left: -1.2rem;
+            width: 2.4rem;
+        }
+        .one{
+            width: 6.6rem;
+            height: .88rem;
+            border-radius: 0.44rem;
+            background: #F8F8F8;
+            position: absolute;
+            top: 2.42rem;
+            left: 50%;
+            margin-left: -3.3rem;
+            display: flex;
+            align-items: center;
+        }
+        .one>img{
+            width: .36rem;
+            height: .36rem;
+            position: absolute;
+            left: .3rem;
+            align-items: center;
+        }
+
+        .two{
+             width: 6.6rem;
+             height: .88rem;
+             border-radius: 0.44rem;
+             background: #F8F8F8;
+             position: absolute;
+             top: 3.5rem;
+             left: 50%;
+             margin-left: -3.3rem;
+             display: flex;
+             align-items: center;
+         }
+        .two .le{
+            width: .36rem;
+            height: .36rem;
+            position: absolute;
+            left: .3rem;
+            align-items: center;
+        }
+        .two .ri{
+            width: .30rem;
+            height: .16rem;
+            position: absolute;
+            right: .36rem;
+            align-items: center;
+        }
+        .three{
+            width: 6.6rem;
+            height: .88rem;
+            border-radius: 0.44rem;
+            background: #F8F8F8;
+            position: absolute;
+            top: 4.58rem;
+            left: 50%;
+            margin-left: -3.3rem;
+            display: flex;
+            align-items: center;
+        }
+        .three>img{
+            width: .36rem;
+            height: .36rem;
+            position: absolute;
+            left: .3rem;
+            align-items: center;
+        }
+        .four{
+            width: 6.6rem;
+            height: .88rem;
+            border-radius: 0.44rem;
+            background: #F8F8F8;
+            position: absolute;
+            top: 5.66rem;
+            left: 50%;
+            margin-left: -3.3rem;
+            display: flex;
+            align-items: center;
+        }
+        .four>img{
+            width: .36rem;
+            height: .36rem;
+            position: absolute;
+            left: .3rem;
+            align-items: center;
+        }
+        #btnSendCode1{
+            width: 2rem;
+            height: .88rem;
+            border-radius: 0 0.44rem 0.44rem 0;
+            background: #999999;
+            position: absolute;
+            right: 0;
+            font-size: .28rem;
+            color: #ffffff;
+            outline: none;
+            -webkit-appearance: none;
+            border:1px #999999 solid;
+        }
+        .right>span{
+            display: block;
+            text-align: center;
+            line-height: .88rem;
+            font-family: PingFangSC-Regular;
+        }
+        .input{
+            width: 3.9rem;
+            height: .88rem;
+            position: absolute;
+            left: 2.30rem;
+            background-color:transparent;
+            border-style:none;
+            outline: none;
+            color: #333333FF;
+            font-size: .26rem;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+            color: #C4C4C4;
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #C4C4C4;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #C4C4C4;
+        }
+        input:-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: #C4C4C4;
+        }
+        .yi{
+            width: 2.2rem;
+        }
+        .yuan{
+            width: .3rem;
+            height: .3rem;
+            position: absolute;
+            top: 6.8rem;
+            left: .46rem;
+        }
+        .tk{
+            width: 6.2rem;
+            font-family: PingFangSC-Regular;
+            font-size: .24rem;
+            color: #999999;
+            position: absolute;
+            top: 6.76rem;
+            left: .84rem;
+        }
+
+        .foot .zuo{
+            width: 1.8rem;
+            height: .68rem;
+            background: #999999;
+            border-radius: 17px;
+            position: absolute;
+            top: 8.06rem;
+            left: .98rem;
+            font-size: .28rem;
+            color: #ffffff;
+            text-align: center;
+            line-height: .68rem;
+        }
+        .foot .you{
+            width: 1.8rem;
+            height: .68rem;
+            background: #C6C6C6;
+            border-radius: 17px;
+            position: absolute;
+            top: 8.06rem;
+            right: .98rem;
+            font-size: .28rem;
+            color: #ffffff;
+            text-align: center;
+            line-height: .68rem;
+        }
+        .bt{
+            font-size: .28rem;
+            color: #777777;
+            font-family: PingFangSC-Regular;
+            position: absolute;
+            left: .9rem;
+            font-weight: Regular;
+        }
+        #op{
+            width: 2.6rem;
+            height: .78rem;
+            position: absolute;
+            top: 4rem;
+            left: 2.46rem;
+        }
+        #yearwrapper ul li, #monthwrapper ul li, #daywrapper ul li{
+            font-size:0.33rem;
+        }
+        .getDateBox .choiceDateTitle {
+            height: .933rem;
+            background-color: #f2f2f2;
+        }
+        .getDateBox .choiceDateTitle button {
+            height: 100%;
+            padding: 0 .333rem;
+            color: #00c599;
+            font-size: 0.4rem;
+            background: none;
+            border: 0;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.2);
+        }
+        .getDateBox .dateContent {
+            width: 100%;
+            margin: 1rem 0;
+            height: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        img{
+            vertical-align:top;
+            border:none;
+        }
+        .box1{
+            width: 100%;
+            height: 14.48rem;
+            position: relative;
+        }
+        .box1 .back_img{
+            width: 100%;
+            height: auto;
+        }
+        .box1 .huoqu{
+            width: 2.9rem;
+            height: .62rem;
+            font-family: PingFangSC-Light;
+            font-size: .28rem;
+            color: #666666FF;
+            position: absolute;
+            left: 3.78rem;
+            top: 1.55rem;
+        }
+        .box1 .tu1{
+            width: 100%;
+            height: auto;
+        }
+        .box1 .tu2{
+            width: 100%;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+  <div class="box">
+      <img class="back_img" src="https://aud3ip5.ergedd.com/h5/vipkid/1/back.jpg" alt="">
+      <div class="wz">提交信息解锁后15集</div>
+      <div class="one">
+          <img src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon1.png" alt="">
+          <input id="text1" class="input" placeholder="请输入宝宝昵称" onblur="checkFormValue()" value="">
+          <span class="bt">宝宝昵称</span>
+      </div>
+      <div class="two">
+          <img class="le" src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon2.png" alt="">
+          <span class="bt">宝宝生日</span>
+            <input id="dateSelectorOne" class="input" onblur="checkFormValue()" placeholder="请选择宝宝生日" value="" readonly="readonly">
+          <img  id="outDay" class="ri" src="https://aud3ip5.ergedd.com/h5/vipkid/1/sanjiao.png" alt="" >
+      </div>
+      <div class="three">
+          <img src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon3.png" alt="">
+          <span class="bt">手机号</span>
+          <input class="input" id="phone1" type="text" onblur="checkFormValue()" autocomplete="off" placeholder="请输入您的手机号" >
+      </div>
+      <div class="four">
+          <img src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon4.png" alt="">
+          <span class="bt">验证码</span>
+          <input id="text4" class="input yi" onblur="checkFormValue()" placeholder="请输入短信验证码" value="" >
+          <input id="btnSendCode1" type="button" class="btn btn-default" value="获取验证码" onClick="sendMessage1()" />
+      </div>
+      <!--<div class="right" id="btnSendCode1" onClick="sendMessage1()">-->
+          <!--<span>获取验证码</span>-->
+      <!--</div>-->
+      <img class="yuan"  src="https://aud3ip5.ergedd.com/h5/vipkid/1/yuan.png" alt="" onClick="choose()">
+      <!--<input type="checkbox" id="gou"/>-->
+      <img class="yuan" id="xuanze" src="https://aud3ip5.ergedd.com/h5/vipkid/1/icon5.png" style="display: none" onClick="choose()">
+      <div class="tk" onClick="choose()">同时获得VIPKID288元北美外教试听礼包,以上信息将提供VIPKID,并可能接到回访电话.</div>
+      <div class="foot">
+          <div class="zuo" onClick="cancel()">取消</div>
+          <div class="you" id="tj" onClick="put()">提交</div>
+      </div>
+      <img id="op" src="https://aud3ip5.ergedd.com/h5/vipkid/1/t.png" alt="" style="display: none">
+  </div>
+  <input name="iconValue" id="iconV" type="hidden" value="off">
+  <div class="box1" style="display: none">
+      <img class="back_img" src="https://aud3ip5.ergedd.com/h5/vipkid/1/land_out.jpg" alt="">
+      <div class="huoqu">获赠VIPKID 288元北美外教试听礼包</div>
+      <img class="tu1" src="https://aud3ip5.ergedd.com/h5/vipkid/1/land_out1.png" alt="">
+      <img class="tu2" src="https://aud3ip5.ergedd.com/h5/vipkid/1/land_out2.png" alt="">
+  </div>
+</body>
+</html>
+<!--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="./md5.js"></script>
+<script>
+    var flag=true;
+    var reg = /^[A-Za-z0-9]{8}/; // 昵称8字符正则
+    var phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;//手机号正则
+    var count = 60; //间隔函数，1秒执行
+    var InterValObj1; //timer变量，控制时间
+    var curCount1;//当前剩余秒数
+    let par = [];
+
+    // 取消为空
+    function cancel() {
+        $("#text1").val("");
+        $("#dateSelectorOne").val("");
+        $("#phone1").val("");
+        $("#text4").val("");
+    }
+
+
+    // 判断手机号码正确
+    function sendMessage1() {
+        curCount1 = count;
+        var phone = $.trim($('#phone1').val());
+        if (!phoneReg.test(phone)) {
+            alert(" 请输入有效的手机号码");
+            return false;
+        }
+        //设置button效果，开始计时
+        $("#btnSendCode1").attr("disabled", "true");
+        $("#btnSendCode1").val(+curCount1 + "S再获取");
+        InterValObj1 = window.setInterval(SetRemainTime1, 1000); //启动计时器，1秒执行一次
+        //向后台发送处理数据
+        var phone_num = $("#phone1").val();
+        if (phone_num != "") {
+
+            // 数组排序
+            function objKeySort(obj) {
+                var newkey = Object.keys(obj).sort();
+                //先用Object内置类的keys方法获取要排序对象的属性名，再利用Array原型上的sort方法对获取的属性名进行排序，newkey是一个数组
+                var newObj = {};//创建一个新的对象，用于存放排好序的键值对
+                for (var i = 0; i < newkey.length; i++) {//遍历newkey数组
+                    newObj[newkey[i]] = obj[newkey[i]];//向新创建的对象中按照排好的顺序依次增加键值对
+                }
+                return newObj;//返回排好序的新对象
+            }
+
+            par['app'] = 'mtirjcfyvxgbchnj';
+            par['tel'] = phone_num;
+            par['time'] = new Date().getTime();
+            // par = objKeySort(par);
+            //
+            // let arr = [];
+            // for(let key in par){
+            //     arr.push(key+'='+par[key]);
+            // }
+            // par['sign'] = hex_md5(arr.join('&') + '3C49FnPkqGpTMu9nbNypFaoukuNbM7Cm');
+            // arr.push('sign='+par['sign']);
+
+            let parData = makeSignPar(par);
+            console.log('parData',parData);
+            $.ajax({
+                url: "https://ddadv.ergedd.com/api/sms/sendtelcode",
+                type: "post",
+                dataType: 'json',
+                data: parData,
+                success: function (res) {
+                    console.log(res)
+                    if(res.success = false){
+
+                    }
+                }
+            })
+        }
+    }
+
+    function makeSignPar(obj){
+
+            var newkey = Object.keys(obj).sort();
+            var newObj = {};
+            for (var i = 0; i < newkey.length; i++) {
+                newObj[newkey[i]] = obj[newkey[i]];//向新创建的对象中按照排好的顺序依次增加键值对
+            }
+
+        let par = newObj;
+        let arr = [];
+        for(let key in par){
+            arr.push(key+'='+encodeURIComponent(par[key]));
+        }
+        par['sign'] = hex_md5(arr.join('&') + '3C49FnPkqGpTMu9nbNypFaoukuNbM7Cm');
+        arr.push('sign='+par['sign']);
+        console.log(par);
+        return arr.join('&');
+    }
+
+    //  重新发送
+    function SetRemainTime1() {
+        if (curCount1 == 0) {
+            window.clearInterval(InterValObj1);//停止计时器
+            $("#btnSendCode1").removeAttr("disabled");//启用按钮
+            $("#btnSendCode1").css("background-color","#45D190");
+            $("#btnSendCode1").css("border","#45D190");
+            $("#btnSendCode1").val("重新发送");
+            // $("#op").css("display","block");
+        }
+        else {
+            curCount1--;
+            $("#btnSendCode1").val( + curCount1 + "S再获取");
+        }
+    }
+
+    // 选择日期
+    new Mdate("dateSelectorOne");
+
+    // new Mdate("dateShowBtn", {
+    //         acceptId: "dateSelectorTwo",
+    //         beginYear: "2002",
+    //         beginMonth: "10",
+    //         beginDay: "24",
+    //         endYear: "2017",
+    //         endMonth: "1",
+    //         endDay: "1",
+    //         format: "-"
+    //     })
+
+    function choose() {
+        console.log($("#iconV").val())
+        if($("#iconV").val()=="off"){
+            $("#xuanze").css("display","block");
+            $("#iconV").val("on");
+        }else{
+            $("#iconV").val("off");
+            $("#xuanze").css("display","none");
+
+
+        }
+
+    }
+    function choose1() {
+        $("#xuanze").css("display","none");
+    }
+    // 填写完毕提交按钮改变颜色
+    // $("input,textarea").on("input",function(){
+    //     var getuserAddress = $("#text1").val();
+    //     var getuserPhone = $("#dateSelectorOne").val();
+    //     var gettxtArea = $("#phone1").val();
+    //     var getaddressTextarea = $("#text4").val();
+    //     // var gou = $("#gou").val();
+    //     if(getuserAddress != '' && getuserPhone != '' && gettxtArea != '' && getaddressTextarea != ''){
+    //         $("#tj").css("background","#00c599");
+    //     }
+    // });
+
+    function checkFormValue(){
+        var phone_num = $("#phone1").val();
+        var name =  $("#text1").val();
+        var birthday = $("#dateSelectorOne").val();
+        var code = $("#text4").val();
+        console.log(phoneReg.test(phone_num))
+        if(name.length<8  && name.length>1 && phoneReg.test(phone_num) && birthday!="" && code!=""&& $("#iconV").val()=="off"){
+            $("#tj").css("background","#00c599");
+        }else{
+            $("#tj").css("background","#C6C6C6");
+        }
+
+
+
+    }
+
+    // 提交
+
+    function put(){
+       // $("#tj").css("background","#666666FF");
+        /*if($("#iconV").val() == "off"){
+            alert("diandian")
+        }
+        //checkFormValue()
+        console.log($("#iconV").val());
+        return false;
+        var phone_num = $("#phone1").val();
+        var name =  $("#text1").val();
+        var brithday = $("#dateSelectorOne").val();
+        var code = $("#text4").val();
+        // 判断昵称字符
+        var str = $("#text1").val("");
+        console.log(name.length);
+        if(name.length>8  || name.length<2){//名字
+            alert("xxx")
+            return false;
+        }
+        if (!phoneReg.test(phone_num)) {
+            alert(" 请输入有效的手机号码");
+            return false;
+        }
+            console.log(phone_num)
+            console.log(par)*/
+
+        var phone_num = $("#phone1").val();
+        var name =  $("#text1").val();
+        var birthday = $("#dateSelectorOne").val();
+        var code = $("#text4").val();
+
+        console.log("kkkkkkk",flag)
+        if($("#iconV").val() == "off"){
+            alert("请勾选获得礼包")
+            return false;
+        }else {
+            $("#tj").css("background","#C6C6C6");
+        }
+        if(name.length<8  && name.length>1 && phoneReg.test(phone_num) && birthday!="" && code!=""&& $("#iconV").val()=="on" ){
+            // flag=false;
+            // $("#tj").css("background","#00c599");
+
+
+            let parData = makeSignPar({
+                app:"mtirjcfyvxgbchnj",
+                birthday: birthday,
+                nick: name,
+                tel: phone_num,
+                code: code,
+                time:new Date().getTime(),
+                uuid: "ffffffff-eb54-56a7-ffff-ffffc7dc763d",
+                tag: "vipkid",
+            });
+
+            console.log(parData);
+            $.ajax({
+                url: "https://ddadv.ergedd.com/api/custom/info",
+                type: "post",
+                dataType: 'json',
+                data: parData,
+                success: function (res) {
+                    if (res.success == true) {
+                        // document.getElementById('tj').disabled = true; //true禁用
+                        $(".box1").css("display","block");
+                        $("#op").css("display","none");
+                    }else {
+                        // flag=true
+                        $("#op").css("display","block");
+                    }
+                }
+            });
+        }
+
+    }
+
+</script>
